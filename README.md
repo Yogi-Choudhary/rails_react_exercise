@@ -55,6 +55,9 @@
 	11:17:03 css.1  | $ postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css
 	11:17:04 css.1  | [nodemon] clean exit - waiting for changes before restart**
 
+
+# Step 3. Install React Frontend dependencies
+
 * To set them up, use the **$ yarn add react react-dom react-router-dom** command with the Yarn package manager. You can find installed dependencies in the package.json file.
 
 
@@ -90,4 +93,48 @@
 	    "defaults"
 	  ]
 	}
+
+# Step 4. Create the Homepage
+  * The next step is to create a homepage where users land when they open application.
+  **rails g controller Homepage index**
+
+
+
+# Step 5. Configure React as your Rails Frontend
+
+  * With React being on the frontend part of your app, you can excel at creating a dynamic and interactive homepage.
+
+  * While most of the settings for seamless work between React and Rails are in place, you need to configure the esbuild entry point for JavaScript files.
+
+  * To do this, create a components directory in the app/javascript directory — it’s where components for the entire application will be housed, including the entry file.
+
+  * Run this command:
+
+  **$ mkdir ~/rails_react_exercise/app/javascript/component**
+
+  * Then, open the application.js file
+
+  * Add **import "./components"** to the last row of your command preview.
+
+  * With the directory imported into the entry point, now you can proceed to create a component for the homepage that will have content and a CTA button to view all exercises.
+
+  * For that, create a Home.jsx file in the components directory to extend JavaScript code:
+
+  **$vim ~/rails_react_exercise/app/javascript/components/Home.jsx**
+
+  * Now it’s time to create the routes directory. It has corresponding components, which are rendered to a browser when a route is loaded. 
+
+  * Run this command:
+
+  **$mkdir ~/rails_react_exercise/app/javascript/routes**
+
+  * Then, create an index.jsx file:
+
+  **$vim ~/rails_react_exercise/app/javascript/routes/index.jsx**
+
+  * Now that you have these modules, you can set up routing using React Router. For that, create an App.jsx file in the **app/javascript/components** directory:
+
+  **$vim ~/rails_react_exercise/app/javascript/components/App.jsx**
+
+  
 
