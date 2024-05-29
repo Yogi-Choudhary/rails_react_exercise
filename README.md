@@ -136,5 +136,21 @@
 
   **$vim ~/rails_react_exercise/app/javascript/components/App.jsx**
 
-  
+
+# Step 6. Create the Exercise Model and Controller
+
+  * The next step in the React Rails installation script is to create the exercise model and controller.
+
+  * In order to create an Exercise model, run the following command:
+
+  **rails generate model Exercise name:string trainings:text instruction:text image:string**
+
+  * To ensure that your database contains only valid data, you need to add database validation. For that, open your exercise model located at app/models/exercise.rb and add these lines to the code:
+
+
+  validates :name, presence: true
+	validates :trainings, presence: true
+	validates :instruction, presence: true
+
+	
 
