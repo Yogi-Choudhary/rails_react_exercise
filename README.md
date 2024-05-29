@@ -53,4 +53,41 @@
 	11:16:59 web.1  | Use Ctrl-C to stop
 	11:16:59 css.1  | $ sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules
 	11:17:03 css.1  | $ postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css
-	11:17:04 css.1  | [nodemon] clean exit - waiting for changes before restart
+	11:17:04 css.1  | [nodemon] clean exit - waiting for changes before restart**
+
+* To set them up, use the **$ yarn add react react-dom react-router-dom** command with the Yarn package manager. You can find installed dependencies in the package.json file.
+
+
+* In order to see the list of installed packages, check them under the dependencies:
+
+	{
+	  "name": "app",
+	  "private": true,
+	  "dependencies": {
+	    "@hotwired/stimulus": "^3.2.2",
+	    "@hotwired/turbo-rails": "^8.0.4",
+	    "@popperjs/core": "^2.11.8",
+	    "autoprefixer": "^10.4.19",
+	    "bootstrap": "^5.3.3",
+	    "bootstrap-icons": "^1.11.3",
+	    "esbuild": "^0.21.4",
+	    "nodemon": "^3.1.1",
+	    "postcss": "^8.4.38",
+	    "postcss-cli": "^11.0.0",
+	    "react": "^18.3.1",
+	    "react-dom": "^18.3.1",
+	    "react-router-dom": "^6.23.1",
+	    "sass": "^1.77.2"
+	  },
+	  "scripts": {
+	    "build": "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+	    "build:css:compile": "sass ./app/assets/stylesheets/application.bootstrap.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules",
+	    "build:css:prefix": "postcss ./app/assets/builds/application.css --use=autoprefixer --output=./app/assets/builds/application.css",
+	    "build:css": "yarn build:css:compile && yarn build:css:prefix",
+	    "watch:css": "nodemon --watch ./app/assets/stylesheets/ --ext scss --exec \"yarn build:css\""
+	  },
+	  "browserslist": [
+	    "defaults"
+	  ]
+	}
+
